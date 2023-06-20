@@ -121,7 +121,6 @@ loadBtn.addEventListener('click', () => {
 
 postForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
   if (csrftoken) {
     $.ajax({
       type: 'POST',
@@ -161,7 +160,6 @@ postForm.addEventListener('submit', (e) => {
       },
       error: function (error) {
         console.log(error);
-        handleALerts('danger', 'ups.....something went wrong')
         postForm.reset()
       },
     });

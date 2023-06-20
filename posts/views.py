@@ -11,7 +11,8 @@ from profiles.models import Profile
 
 def post_list_and_create(request):
     form = PostForm(request.POST or None)
-    if request.is_ajax():
+    if request.method == 'POST':
+        print(request.POST)
         if form.is_valid():
             author = Profile.objects.get(user=request.user)
             instance = form.save(commit=False)
@@ -43,7 +44,7 @@ def post_detail(request, pk):
 
 
 def load_post_data_view(request, num_posts):
-    if request.is_ajax():
+    if request.method == 'GET':
         visible = 3
         upper = num_posts
         lower = upper - visible
